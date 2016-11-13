@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/sregistration" method="post">
+<form action="/registration" method="post">
 Login: <input type="text" name="Login"><br>
 Password: <input type="password" name="Password"><br>
 Confirm Password: <input type="password" name="ConfirmPassword">

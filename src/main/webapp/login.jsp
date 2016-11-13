@@ -11,11 +11,8 @@
     <title>Welcome</title>
 </head>
 <body>
-<% if(request.getSession().getAttribute("login")!=null){
-    response.sendRedirect("/");
-}%>
 <h1> Hello </h1>
-<form action="clogin" method="post">
+<form action="login" method="post">
 Login<input type="text" name="login"><br>
 Password<input type="password" name="password"><br>
     <input type="checkbox" name="remember">Remember me<br>

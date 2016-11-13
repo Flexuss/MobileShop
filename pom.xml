@@ -19,6 +19,11 @@
       <artifactId>postgresql</artifactId>
       <version>9.3-1102.jdbc41</version>
     </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>bootstrap</artifactId>
+      <version>3.2.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Artifact</finalName>

@@ -6,27 +6,19 @@
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>Login</servlet-name>
-        <jsp-file>/login.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>checklogin</servlet-name>
         <servlet-class>ru.kpfu.itis.dmitry_ivanov.Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Registration</servlet-name>
-        <jsp-file>/registration.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>SRegistration</servlet-name>
         <servlet-class>ru.kpfu.itis.dmitry_ivanov.Registration</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Check</servlet-name>
-        <jsp-file>/check.jsp</jsp-file>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.Home</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Products</servlet-name>
-        <jsp-file>/products.jsp</jsp-file>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.Welcome</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -37,19 +29,14 @@
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Check</servlet-name>
-        <url-pattern>/check</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>checklogin</servlet-name>
-        <url-pattern>/clogin</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SRegistration</servlet-name>
-        <url-pattern>/sregistration</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Products</servlet-name>
+        <servlet-name>Home</servlet-name>
         <url-pattern>/products</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>ru.kpfu.itis.dmitry_ivanov.Welcome</welcome-file>
+    </welcome-file-list>
 </web-app>
