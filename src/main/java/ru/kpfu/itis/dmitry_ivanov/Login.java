@@ -25,12 +25,13 @@ public class Login extends javax.servlet.http.HttpServlet {
             }
             HttpSession session = request.getSession();
             session.setAttribute("user", login);
-            response.sendRedirect("/");
+            response.sendRedirect("/products");
         } else response.sendRedirect("/login");
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        boolean isLogedIn=false;
+        boolean isLogedIn = false;
+        boolean isAdmin = false;
         if (request.getSession().getAttribute("user") == null) {
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
@@ -40,16 +41,25 @@ public class Login extends javax.servlet.http.HttpServlet {
                         String[] strings = cookie.getValue().split("&");
                         if (db.iscorrect(strings[0], strings[1])) {
                             request.getSession().setAttribute("user", strings[0]);
-                            isLogedIn=true;
+                            if (request.getSession().getAttribute("user").equals("admin")) {
+                                isAdmin = true;
+                            }
+                            isLogedIn = true;
                         }
                     }
                 }
             }
         } else {
-            isLogedIn=true;
+            isLogedIn = true;
+            if (request.getSession().getAttribute("user").equals("admin")) {
+                isAdmin = true;
+            }
         }
-        if(isLogedIn){
-            response.sendRedirect("/");
-        }else request.getRequestDispatcher("/login.jsp").forward(request, response);
+        if (isLogedIn) {
+            if (isAdmin) {
+                request.getRequestDispatcher("/mainadmin.jsp").forward(request, response);
+            } else request.getRequestDispatcher("/mainlogedin.jsp").forward(request, response);
+
+        } else request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 }

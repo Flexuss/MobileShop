@@ -7,24 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Dmitry on 13.11.2016.
  */
 public class Home extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean isLogedIn=false;
         boolean isAdmin=false;
+        Database db =new Database();
         if (request.getSession().getAttribute("user") == null) {
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
                 for (Cookie cookie : cookies) {
                     if (cookie.getName().equals("user_data")) {
-                        Database db = new Database();
                         String[] strings = cookie.getValue().split("&");
                         if (db.iscorrect(strings[0], strings[1])) {
                             request.getSession().setAttribute("user", strings[0]);

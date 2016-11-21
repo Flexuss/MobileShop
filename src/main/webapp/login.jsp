@@ -8,15 +8,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Welcome</title>
+    <title>Login</title>
 </head>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <body>
-<h1> Hello </h1>
-<form action="login" method="post">
-Login<input type="text" name="login"><br>
-Password<input type="password" name="password"><br>
-    <input type="checkbox" name="remember">Remember me<br>
-<button type="submit">Log In</button>
-</form>
+<% if(request.getSession().getAttribute("user")!=null){
+    response.sendRedirect("/products");
+}%>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+    <a class="navbar-brand">MobileShop</a>
+    <div class="nav pull-right">
+        <ul class="nav navbar-nav">
+            <li><a href="/products" class="btn btn-link">Products</a></li>
+            <li class="active"><a href="/login" class="btn btn-link">Login</a> </li>
+            <li><a href="/registration" class="btn btn-link">Registration</a> </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<div class="container">
+    <form class="form-group" role="form" action="login" method="post">
+        <h2 class="header-panel text-center">Login</h2>
+        <input type="text" class="form-control" placeholder="Login" name="login" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
+        <label class="checkbox text-center">
+            <input type="checkbox" name="remember">Remember me
+        </label>
+        <button class="btn btn-block" type="submit">Log in</button>
+    </form>
+</div>
 </body>
 </html>

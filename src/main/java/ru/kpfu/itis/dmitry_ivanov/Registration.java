@@ -16,20 +16,21 @@ public class Registration extends HttpServlet {
 
     Database db=new Database();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String login=request.getParameter("Login");
-        String pass=request.getParameter("Password");
-        String cpass=request.getParameter("ConfirmPassword");
-        String mail=request.getParameter("e-mail");
-        if(db.checkuser(login)){
-            if(pass.equals(cpass)) {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("password");
+        String cpass = request.getParameter("confirmPassword");
+        String mail = request.getParameter("e-mail");
+        if (db.checkuser(login)) {
+            if (pass.equals(cpass)) {
                 db.addUser(login, pass, mail);
                 response.sendRedirect("/login");
-            }else response.sendRedirect("/registration");
-        }else response.sendRedirect("/registration");
+            } else response.sendRedirect("/registration");
+        } else response.sendRedirect("/registration");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean isLogedIn=false;
+        boolean isAdmin=false;
         if (request.getSession().getAttribute("user") == null) {
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
@@ -39,6 +40,9 @@ public class Registration extends HttpServlet {
                         String[] strings = cookie.getValue().split("&");
                         if (db.iscorrect(strings[0], strings[1])) {
                             request.getSession().setAttribute("user", strings[0]);
+                            if(request.getSession().getAttribute("user").equals("admin")){
+                                isAdmin=true;
+                            }
                             isLogedIn=true;
                         }
                     }
@@ -46,9 +50,15 @@ public class Registration extends HttpServlet {
             }
         } else {
             isLogedIn=true;
+            if(request.getSession().getAttribute("user").equals("admin")){
+                isAdmin=true;
+            }
         }
         if(isLogedIn){
-            response.sendRedirect("/");
+            if(isAdmin) {
+
+                request.getRequestDispatcher("/mainadmin.jsp").forward(request, response);
+            }else request.getRequestDispatcher("/mainlogedin.jsp").forward(request, response);
         }else request.getRequestDispatcher("/registration.jsp").forward(request, response);
     }
 }
