@@ -1,8 +1,7 @@
-package ru.kpfu.itis.dmitry_ivanov;
+package ru.kpfu.itis.dmitry_ivanov.servlets;
 
-import javafx.scene.chart.PieChart;
+import ru.kpfu.itis.dmitry_ivanov.database.Database;
 
-import javax.jms.Session;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;

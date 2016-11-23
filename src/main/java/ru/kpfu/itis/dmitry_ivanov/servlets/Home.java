@@ -1,13 +1,13 @@
-package ru.kpfu.itis.dmitry_ivanov;
+package ru.kpfu.itis.dmitry_ivanov.servlets;
+
+import ru.kpfu.itis.dmitry_ivanov.database.Database;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Dmitry on 13.11.2016.

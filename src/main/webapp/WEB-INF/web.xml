@@ -6,23 +6,23 @@
   <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.Login</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Registration</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.Registration</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Registration</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Home</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.Home</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Home</servlet-class>
     </servlet>
     <!--<servlet>-->
         <!--<servlet-name>Welcome</servlet-name>-->
-        <!--<servlet-class>ru.kpfu.itis.dmitry_ivanov.Welcome</servlet-class>-->
+        <!--<servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Welcome</servlet-class>-->
     <!--</servlet>-->
     <servlet>
         <servlet-name>Logout</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.Logout</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Logout</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Product</servlet-name>
@@ -30,15 +30,15 @@
     </servlet>
     <servlet>
         <servlet-name>AddProduct</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.AddProduct</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.AddProduct</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Remove</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.Remove</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Remove</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddToCart</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.AddToCart</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.AddToCart</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Cart</servlet-name>
@@ -46,11 +46,11 @@
     </servlet>
     <servlet>
         <servlet-name>RemoveFromCart</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.RemoveFromCart</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.RemoveFromCart</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddComment</servlet-name>
-        <servlet-class>ru.kpfu.itis.dmitry_ivanov.AddComment</servlet-class>
+        <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.AddComment</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Checkout</servlet-name>
@@ -117,6 +117,6 @@
         <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>ru.kpfu.itis.dmitry_ivanov.Welcome</welcome-file>
+        <welcome-file>ru.kpfu.itis.dmitry_ivanov.servlets.Welcome</welcome-file>
     </welcome-file-list>
 </web-app>

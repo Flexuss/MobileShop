@@ -1,4 +1,6 @@
-package ru.kpfu.itis.dmitry_ivanov;
+package ru.kpfu.itis.dmitry_ivanov.entity;
+
+import ru.kpfu.itis.dmitry_ivanov.database.Database;
 
 /**
  * Created by Dmitry on 21.11.2016.

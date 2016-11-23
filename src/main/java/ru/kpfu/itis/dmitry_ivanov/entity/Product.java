@@ -1,4 +1,4 @@
-package ru.kpfu.itis.dmitry_ivanov;
+package ru.kpfu.itis.dmitry_ivanov.entity;
 
 /**
  * Created by Dmitry on 14.11.2016.

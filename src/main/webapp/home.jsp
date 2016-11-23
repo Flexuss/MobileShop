@@ -1,5 +1,5 @@
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Database" %>
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Product" %>
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.database.Database" %>
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.entity.Product" %>
 <%@ page import="java.util.ArrayList" %>
 <html>
 <head>

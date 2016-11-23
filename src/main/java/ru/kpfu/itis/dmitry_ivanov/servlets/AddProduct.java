@@ -1,12 +1,12 @@
-package ru.kpfu.itis.dmitry_ivanov;
+package ru.kpfu.itis.dmitry_ivanov.servlets;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.InternetHeaders;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import ru.kpfu.itis.dmitry_ivanov.database.Database;
+import ru.kpfu.itis.dmitry_ivanov.entity.Product;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

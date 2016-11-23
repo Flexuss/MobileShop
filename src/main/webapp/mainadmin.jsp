@@ -5,8 +5,8 @@
   Time: 14:47
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Database" %>
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Product" %>
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.database.Database" %>
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.entity.Product" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

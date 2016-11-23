@@ -1,8 +1,10 @@
-package ru.kpfu.itis.dmitry_ivanov;
+package ru.kpfu.itis.dmitry_ivanov.database;
+
+import ru.kpfu.itis.dmitry_ivanov.entity.Comment;
+import ru.kpfu.itis.dmitry_ivanov.entity.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
 
 /**
  * Created by Dmitry on 08.11.2016.

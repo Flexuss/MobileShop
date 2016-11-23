@@ -1,4 +1,4 @@
-package ru.kpfu.itis.dmitry_ivanov;
+package ru.kpfu.itis.dmitry_ivanov.servlets;
 
 import javax.jms.Session;
 import javax.servlet.ServletException;

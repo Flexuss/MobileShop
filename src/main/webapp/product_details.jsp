@@ -1,7 +1,7 @@
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Database" %>
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Product" %>
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.database.Database" %>
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.entity.Product" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Comment" %><%--
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.entity.Comment" %><%--
   Created by IntelliJ IDEA.
   User: Dmitry
   Date: 14.11.2016
