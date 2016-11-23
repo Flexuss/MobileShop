@@ -31,6 +31,7 @@
 </nav>
 <div class="container">
     <h3 id="checkout" class="page-header text-center">You make a purchase at <%=request.getParameter("cost")%> rubles</h3>
+    <% request.getSession().removeAttribute("cart");%>
 </div>
 </body>
 </html>

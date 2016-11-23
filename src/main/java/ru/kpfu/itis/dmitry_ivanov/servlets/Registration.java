@@ -17,7 +17,7 @@ import java.io.IOException;
 public class Registration extends HttpServlet {
 
     Database db=new Database();
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String pass = request.getParameter("password");
         String cpass = request.getParameter("confirmPassword");

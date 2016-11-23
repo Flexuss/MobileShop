@@ -222,6 +222,18 @@ public class Database {
         }
     }
 
+    public void removeUser(String login){
+        connect();
+        try {
+            statement = connection.prepareStatement("delete from users where login=?;");
+            statement.setString(1,login);
+            statement.executeUpdate();
+            disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<Product> getCartProductList(String products){
         ArrayList<Product> productList=new ArrayList<Product>();
             String[] strings = products.split("&");
