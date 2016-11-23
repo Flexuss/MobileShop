@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Add Product</title>
 </head>
 <body>
 <% if(request.getSession().getAttribute("user")==null){ response.sendRedirect("/products");}else{if(!request.getSession().getAttribute("user").equals("admin")) {

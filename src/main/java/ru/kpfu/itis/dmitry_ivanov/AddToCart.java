@@ -1,5 +1,6 @@
 package ru.kpfu.itis.dmitry_ivanov;
 
+import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -14,14 +15,16 @@ import java.io.IOException;
 @WebServlet(name = "AddToCart")
 public class AddToCart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        String cart= (String) request.getSession().getAttribute("cart");
+        String product = request.getParameter("product");
+        if(cart==null){
+            request.getSession().setAttribute("cart",product);
+        }else
+            request.getSession().setAttribute("cart",cart+"&"+product);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession().getAttribute("cart")==null){
-            request.getSession().setAttribute("cart",request.getParameter("product"));
-        }else
-        request.getSession().setAttribute("cart",request.getSession().getAttribute("cart")+"&"+request.getParameter("product"));
-        response.sendRedirect("/products");
+
+       // response.sendRedirect("/products");
     }
 }

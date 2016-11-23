@@ -4,13 +4,14 @@ import javafx.scene.chart.PieChart;
 
 import javax.jms.Session;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
  * Created by Dmitry on 03.11.2016.
  */
-public class Login extends javax.servlet.http.HttpServlet {
+public class Login extends HttpServlet {
     Database db = new Database();
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {

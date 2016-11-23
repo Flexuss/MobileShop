@@ -2,31 +2,28 @@ package ru.kpfu.itis.dmitry_ivanov;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by Dmitry on 13.11.2016.
+ * Created by Dmitry on 21.11.2016.
  */
-public class Logout extends HttpServlet {
+public class AddComment extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie[] cookies=request.getCookies();
-        for(int i=0;i<cookies.length;i++){
-            if(cookies[i].getName().equals("user_data")){
-                cookies[i].setMaxAge(0);
-                response.addCookie(cookies[i]);
-            }
+        Database db=new Database();
+        if (request.getSession().getAttribute("user")!=null) {
+            String id = request.getParameter("id");
+            String user = (String) request.getSession().getAttribute("user");
+            String text = request.getParameter("comment");
+            Comment comment=new Comment(id, user, text);
+            db.addComment(comment);
         }
-        if(request.getSession().getAttribute("user")!=null){
-            request.getSession().removeAttribute("user");
-        }
-        response.sendRedirect("/products");
+        response.sendRedirect("/product_detail?id="+request.getParameter("id"));
     }
 }

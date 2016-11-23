@@ -1,5 +1,7 @@
 <%@ page import="ru.kpfu.itis.dmitry_ivanov.Database" %>
-<%@ page import="ru.kpfu.itis.dmitry_ivanov.Product" %><%--
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.Product" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="ru.kpfu.itis.dmitry_ivanov.Comment" %><%--
   Created by IntelliJ IDEA.
   User: Dmitry
   Date: 14.11.2016
@@ -14,6 +16,7 @@
 </head>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
+<script src="js/script.js"></script>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -86,18 +89,37 @@
         <li><b>Battery: </b><%=product.battery%></li>
         <li><b>Camera: </b><%=product.camera%></li>
         <li><b>SIM: </b><%=product.sim%></li>
-        <li><b>Weigth: </b><%=product.weigth%></li>
+        <li><b>Weigth: </b><%=product.weight%></li>
     </ul>
         </li>
         <li>
         <h4><b>Cost: </b><%=product.cost%></h4>
-            <% if(request.getSession().getAttribute("user")!=null){%>
-        <a href="/addtocart?product=<%=product.productId%>" class="btn-block btn">Add to Cart</a><%}%>
+            <% if(request.getSession().getAttribute("user")!=null){if(request.getSession().getAttribute("user").equals("admin")){%>
+            <a href="/edit?id=<%=product.productId%>" class="btn btn-block">Edit</a>
+            <a href="/remove?id=<%=product.productId%>" class="btn btn-block">Remove</a><%}else{%>
+            <button class="btn btn-block" onclick="addToCart(<%=product.productId%>)">Add To Cart</button><%}}%>
         </li>
     </ul>
 </div>
 <div class="container">
-
+    <% if(request.getSession().getAttribute("user")!=null){%>
+    <h4>Write a comment:</h4>
+            <form role="form" action="/add_comment?id=<%=request.getParameter("id")%>" method="post">
+                    <textarea name="comment" class="form-control" rows="3"></textarea>
+                <button type="submit" class="btn btn-block">Send comment</button>
+            </form>
+    <%}%>
+            <h4>Comments:</h4>
+            <ul class="list-group" id="comments">
+                <% ArrayList<Comment> comments=db.getCommentList(request.getParameter("id"));
+                for(int i=comments.size()-1;i>=0;i--){%>
+                <li class="list-group-item">
+                    <ul class="list-unstyled">
+                        <li><a><h4><%=comments.get(i).getUserName(comments.get(i).user)%></h4></a></li>
+                        <li><h5 id="comment"><%=comments.get(i).text%></h5></li>
+                    </ul>
+                </li>
+    <%}%>
 </div>
 </body>
 </html>

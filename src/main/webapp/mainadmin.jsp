@@ -62,7 +62,7 @@
                     <li><h3><%=products.get(i).cost%> rub.</h3></li>
                     <li>
                         <a href="/product_detail?id=<%=products.get(i).productId%>" class="btn btn-block">More</a>
-                        <a href="/edit" class="btn btn-block">Edit</a>
+                        <a href="/edit?id=<%=products.get(i).productId%>" class="btn btn-block">Edit</a>
                         <a href="/remove?id=<%=products.get(i).productId%>" class="btn btn-block">Remove</a>
                     </li>
                 </ul>

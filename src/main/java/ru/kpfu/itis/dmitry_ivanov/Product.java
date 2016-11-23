@@ -9,7 +9,7 @@ public class Product {
     public String name;
     public String os;
     public String sim;
-    public String weigth;
+    public String weight;
     public String display;
     public String diagonal;
     public String resolution;
@@ -26,7 +26,7 @@ public class Product {
 
     }
 
-    public Product(int productId, String name, String os, String sim, String weigth, String display, String diagonal, String resolution, String camera, String processor
+    public Product(int productId, String name, String os, String sim, String weight, String display, String diagonal, String resolution, String camera, String processor
             , String ram, String rom, String video, String battery, String cost, String image) {
         this.productId = productId;
 
@@ -37,7 +37,7 @@ public class Product {
         this.sim = sim;
 
 
-        this.weigth = weigth;
+        this.weight = weight;
 
 
         this.display = display;

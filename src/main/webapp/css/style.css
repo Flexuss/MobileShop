@@ -11,7 +11,7 @@
     padding-left: 20%;
     padding-right: 20%;
 }
-.btn
+.btn,
 .btn-block{
     background-color: #f8f8f8;
     color: #777;
@@ -45,4 +45,10 @@
 }
 #about{
     margin-top: 100px;
+}
+#comments{
+    padding-top: 0;
+}
+#comment{
+    white-space: pre-wrap;
 }

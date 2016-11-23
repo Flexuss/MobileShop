@@ -67,7 +67,7 @@ response.sendRedirect("/products");
 </ul>
 
     <h4 class="text-center">Total cost: <%=totalCount%></h4>
-    <button class="btn btn-block pull-right">Buy</button>
+    <a href="/checkout?cost=<%=totalCount%>" class="btn btn-block pull-right">Buy</a>
     </div>
 <%}else%><h1 class="page-header text-center">Cart Empty</h1>
 </body>

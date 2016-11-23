@@ -1,5 +1,6 @@
 package ru.kpfu.itis.dmitry_ivanov;
 
+import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.InternetHeaders;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -24,21 +26,8 @@ public class AddProduct extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Database db=new Database();
-//        String productName=request.getParameter("product_name");
-//        String operatingSystem =request.getParameter("os");
-//        String processor=request.getParameter("processor");
-//        String ram= request.getParameter("ram");
-//        String rom= request.getParameter("rom");
-//        String display= request.getParameter("display");
-//        String diagonal= request.getParameter("diagonal");
-//        String resolution= request.getParameter("resolution");
-//        String battery= request.getParameter("battery");
-//        String camera=request.getParameter("camera");
-//        String sim= request.getParameter("sim");
-//        String weigth= request.getParameter("wigth");
-//        String cost =request.getParameter("cost");
-//        String image="/images/"+request.getParameter("product_name");
-//        String video=request.getParameter("video");
+        HashMap<String, String> parameters = new HashMap<String, String>();
+        String path="";
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if (!isMultipart) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
@@ -58,10 +47,10 @@ public class AddProduct extends HttpServlet {
                 FileItem item = (FileItem) iter.next();
 
                 if (!item.isFormField()) {
-                    processUploadedFile(item);
+                    path=processUploadedFile(item);
                 }else{
                     if(!item.getFieldName().equals("Add Product")){
-                    getParameters(item);
+                        parameters.put(item.getFieldName(), item.getString());
                 }}
             }
         } catch (Exception e) {
@@ -69,31 +58,34 @@ public class AddProduct extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             return;
         }
-        db.addProduct(query.substring(1), value.substring(1));
-        query="";
-        value="";
+        if(request.getParameter("id")!=null){
+          Product product= new Product(Integer.parseInt(request.getParameter("id")),parameters.get("name"),parameters.get("operating_system"),parameters.get("sim"),parameters.get("weight"),
+                    parameters.get("display_type"),parameters.get("diagonal"),parameters.get("resolution"),parameters.get("camera"),parameters.get("processor"),
+                    parameters.get("ram"),parameters.get("rom"),parameters.get("video"),
+                    parameters.get("battery"), parameters.get("cost"),path);
+            db.remove(request.getParameter("id"));
+            db.EditProduct(product);
+        }else {
+        Product product=new Product(-1,parameters.get("name"),parameters.get("operating_system"),parameters.get("sim"),parameters.get("weight"),
+                parameters.get("display_type"),parameters.get("diagonal"),parameters.get("resolution"),parameters.get("camera"),parameters.get("processor"),
+                parameters.get("ram"),parameters.get("rom"),parameters.get("video"),
+                parameters.get("battery"), parameters.get("cost"),path);
+            db.addProduct(product);
+        }
         response.sendRedirect("/products");
     }
 
-    String query="";
-    String value="";
-
-    private void getParameters(FileItem item){
-        query=query+", "+item.getFieldName();
-        value=value+", '"+item.getString()+"'";
-    }
-
-    private void processUploadedFile(FileItem item) throws Exception {
+    private String processUploadedFile(FileItem item) throws Exception {
         File uploadetFile = null;
         String path;
         do {
             path = getServletContext().getRealPath("/images/" + random.nextInt());
             uploadetFile = new File(path);
         }while (uploadetFile.exists());
-        query=query+", image";
-        value=value+", 'images/"+uploadetFile.getName()+"'";
         uploadetFile.createNewFile();
         item.write(uploadetFile);
+        path="/images/"+uploadetFile.getName();
+        return  path;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

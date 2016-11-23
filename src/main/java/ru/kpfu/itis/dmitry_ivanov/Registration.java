@@ -25,7 +25,7 @@ public class Registration extends HttpServlet {
                 db.addUser(login, pass, mail);
                 response.sendRedirect("/login");
             } else response.sendRedirect("/registration");
-        } else response.sendRedirect("/registration");
+        } else response.sendRedirect("/registration?user_exist=true");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

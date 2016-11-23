@@ -19,15 +19,13 @@ public class Remove extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
-            Database db = new Database();
-            db.remove(request.getParameter("id"));
             response.sendRedirect("/products");
         } else {
-            if (!request.getSession().getAttribute("user").equals("admin")) {
+            if (request.getSession().getAttribute("user").equals("admin")) {
                 Database db = new Database();
                 db.remove(request.getParameter("id"));
                 response.sendRedirect("/products");
-            }
+            }else response.sendRedirect("/products");
         }
 
     }

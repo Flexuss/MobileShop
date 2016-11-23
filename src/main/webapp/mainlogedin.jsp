@@ -15,6 +15,7 @@
 </head>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
+<script src="js/script.js"></script>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -62,7 +63,7 @@
                     <li><h3><%=products.get(i).cost%> rub.</h3></li>
                     <li>
                         <a href="/product_detail?id=<%=products.get(i).productId%>" class="btn btn-block">More</a>
-                        <a href="/addtocart?product=<%=products.get(i).productId%>" class="btn btn-block">Add to cart</a>
+                        <button class="btn btn-block" onclick="addToCart(<%=products.get(i).productId%>)">Add To Cart</button>
                     </li>
                 </ul>
                 </li>
