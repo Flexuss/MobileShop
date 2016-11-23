@@ -16,10 +16,6 @@
         <servlet-name>Home</servlet-name>
         <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Home</servlet-class>
     </servlet>
-    <!--<servlet>-->
-        <!--<servlet-name>Welcome</servlet-name>-->
-        <!--<servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Welcome</servlet-class>-->
-    <!--</servlet>-->
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>ru.kpfu.itis.dmitry_ivanov.servlets.Logout</servlet-class>
@@ -72,10 +68,6 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/products</url-pattern>
     </servlet-mapping>
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>Welcome</servlet-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -117,6 +109,6 @@
         <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>ru.kpfu.itis.dmitry_ivanov.servlets.Welcome</welcome-file>
+        <welcome-file>welcome.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

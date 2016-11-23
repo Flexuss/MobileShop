@@ -84,7 +84,7 @@ public class AddProduct extends HttpServlet {
         }while (uploadetFile.exists());
         uploadetFile.createNewFile();
         item.write(uploadetFile);
-        path="/images/"+uploadetFile.getName();
+        path="images/"+uploadetFile.getName();
         return  path;
     }
 
